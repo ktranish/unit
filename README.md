@@ -44,6 +44,32 @@ function App() {
 }
 ```
 
+## Tailwind Configuration
+
+Unit includes a custom Tailwind configuration file (`tailwind.config.js`) that consumers can extend in their own projects. This allows your project’s Tailwind setup to seamlessly inherit Unit’s custom themes, spacing, colors, and other configurations.
+
+To use Unit’s configuration, import it in your own `tailwind.config.js` file and extend it as shown below.
+
+```js
+// tailwind.config.js in the consumer project
+const designSystemConfig = require('@ktranish/unit/tailwind.config');
+
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@ktranish/unit/dist/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      ...designSystemConfig.theme,
+    },
+  },
+  plugins: [
+    ...designSystemConfig.plugins,
+  ],
+};
+```
+
 ## Development
 
 ### Building the Project
