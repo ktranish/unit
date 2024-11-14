@@ -70,6 +70,8 @@ module.exports = {
 };
 ```
 
+This setup allows your project to access the design system’s custom Tailwind configuration, while still being able to add project-specific styles and overrides.
+
 ## Development
 
 ### Building the Project
