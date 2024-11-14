@@ -70,6 +70,14 @@ module.exports = {
 };
 ```
 
+### Required Plugin Installation
+
+To use the plugins from Unit’s configuration, make sure to install the following packages:
+
+```bash
+pnpm add -D @tailwindcss/forms @tailwindcss/typography
+```
+
 This setup allows your project to access the design system’s custom Tailwind configuration, while still being able to add project-specific styles and overrides.
 
 ## Development
