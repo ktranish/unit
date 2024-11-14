@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "npx postcss src/index.css -o dist/index.css && tsc",
     "prepare": "husky",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css}\"",
@@ -34,6 +34,7 @@
     "eslint-plugin-react": "^7.37.2",
     "husky": "^9.1.6",
     "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.8",
     "tailwindcss": "^3.4.15",
