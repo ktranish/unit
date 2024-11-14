@@ -9,11 +9,7 @@
     /* Modules */
     "moduleResolution": "node",
     "baseUrl": "./src",
-    "paths": {
-      "@components/*": ["components/*"],
-      "@utils/*": ["utils/*"],
-    },
-    
+
     /* Emit */
     "declaration": true,
     "declarationMap": true,

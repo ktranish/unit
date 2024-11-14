@@ -1,3 +1,3 @@
-import "@/index.css";
+import "./index.css";
 
-export { cn } from "@utils/cn";
+export { cn } from "./utils/cn";
