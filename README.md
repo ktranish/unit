@@ -4,7 +4,7 @@
 
 ## About
 
-**Unit** is a flexible and scalable design system developed with React and Tailwind CSS. It provides a set of reusable UI components and utility classes to help build responsive, consistent, and maintainable web applications. This project follows utility-first principles to offer maximum customization with minimal configuration.
+**Unit** is a flexible and scalable design system developed with React and Tailwind CSS. It provides a set of reusable UI components, hooks, and utility classes to help build responsive, consistent, and maintainable web applications. This project follows utility-first principles to offer maximum customization with minimal configuration.
 
 ## Features
 
@@ -12,6 +12,7 @@
 - **Tailwind CSS Integration**: Built-in support for Tailwind CSS, allowing quick styling with utility classes.
 - **TypeScript**: Full TypeScript support for better type safety and developer experience.
 - **Utility-first Styling**: Offers a range of configurable design tokens for spacing, typography, colors, and more.
+- **Translation Hook**: Provides an easy-to-use translation hook (`useTranslation`) for multilingual support, with support for dynamic language loading.
 - **Scalable Structure**: Organized file structure for easy navigation and scaling as the design system grows.
 
 ## Getting Started
@@ -78,7 +79,86 @@ To use the plugins from Unit’s configuration, make sure to install the followi
 pnpm add -D @tailwindcss/forms @tailwindcss/typography
 ```
 
-This setup allows your project to access the design system’s custom Tailwind configuration, while still being able to add project-specific styles and overrides.
+## Translation Setup
+
+Unit includes a `useTranslation` hook and `TranslationProvider` to support multilingual content, which can load large translation objects dynamically. This feature is optional and can be used as needed in your project.
+
+1. **Wrap your application** with `TranslationProvider`, passing a language-specific translation object.
+2. **Use the `useTranslation` hook** to access translations within components.
+
+### Dynamic Language Loading
+
+For larger applications, translations can be loaded dynamically based on the selected language. Consumers can store each language in a separate JSON file and load it as needed.
+
+**Example setup with JSON files:**
+
+Organize translations in `locales` directory as follows:
+
+```bash
+src/
+├── locales/
+│   ├── en.json
+│   ├── es.json
+│   └── fr.json
+└── App.tsx
+```
+
+Each JSON file contains translations for one language. For example, `en.json`:
+
+```json
+{
+  "welcome": "Welcome",
+  "goodbye": "Goodbye"
+}
+```
+
+Then, in `App.tsx`, dynamically load translations based on the selected language:
+
+```tsx
+import React, { useState, useEffect } from 'react';
+import { Button, TranslationProvider, useTranslation } from '@ktranish/unit';
+
+const App = () => {
+  const [language, setLanguage] = useState('en');
+  const [translations, setTranslations] = useState({});
+
+  const loadTranslations = async (lang: string) => {
+    const translations = await import(`./locales/${lang}.json`);
+    setTranslations(translations);
+  };
+
+  useEffect(() => {
+    loadTranslations(language);
+  }, [language]);
+
+  const switchLanguage = () => {
+    setLanguage((prev) => (prev === 'en' ? 'es' : 'en'));
+  };
+
+  return (
+    <TranslationProvider translations={translations}>
+      <Welcome />
+      <button onClick={switchLanguage}>
+        Switch to {language === 'en' ? 'Spanish' : 'English'}
+      </button>
+    </TranslationProvider>
+  );
+};
+
+const Welcome = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div>
+      <h1>{t("welcome")}</h1>
+      <Button label={t("goodbye", "Click here")} />
+    </div>
+  );
+};
+
+```
+
+This setup allows you to load only the necessary translations, keeping the app lightweight and efficient.
 
 ## Development
 
@@ -102,6 +182,12 @@ This project uses ESLint for linting and Prettier for code formatting.
 List of core components available in Unit (update with actual components as they’re added):
 
 Each component supports Tailwind utility classes, making it easy to customize and extend.
+
+## Hooks
+
+Unit includes several utility hooks to facilitate common patterns and functionality:
+
+Each hook provides functionality designed to integrate smoothly with Unit’s components, enhancing the developer experience and making complex functionality easy to manage.
 
 ## Contributing
 
