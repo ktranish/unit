@@ -6,6 +6,12 @@ export async function getServerSideTranslations(
   namespaces: string[] = [],
   basePath: string = path.join(process.cwd(), "locales"),
 ) {
+  if (typeof window !== "undefined") {
+    throw new Error(
+      "getServerSideTranslations is a server-side utility and cannot be used in the browser.",
+    );
+  }
+
   const translations: Record<string, string> = {};
 
   if (namespaces.length === 0) {

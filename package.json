@@ -1,7 +1,7 @@
 {
   "name": "@ktranish/unit",
   "version": "1.0.0",
-  "description": "",
+  "description": "A flexible React-based design system leveraging Tailwind CSS and TypeScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -11,8 +11,7 @@
   "exports": {
     ".": "./dist/index.js",
     "./utils/getServerSideTranslations": {
-      "node": "./dist/utils/getServerSideTranslations.js",
-      "default": "./dist/utils/getClientSideTranslations.js"
+      "node": "./dist/utils/getServerSideTranslations.js"
     }
   },
   "scripts": {
