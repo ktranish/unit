@@ -33,12 +33,12 @@ pnpm add @ktranish/unit
 Example usage:
 
 ```tsx
-import React from 'react';
-import { Button, cn } from '@ktranish/unit';
+import React from "react";
+import { Button, cn } from "@ktranish/unit";
 
 function App() {
   return (
-    <div className={cn('p-4')}>
+    <div className={cn("p-4")}>
       <Button label="Click Me" />
     </div>
   );
@@ -53,21 +53,19 @@ To use Unit’s configuration, import it in your own `tailwind.config.js` file a
 
 ```js
 // tailwind.config.js in the consumer project
-const designSystemConfig = require('@ktranish/unit/tailwind.config');
+const designSystemConfig = require("@ktranish/unit/tailwind.config");
 
 module.exports = {
   content: [
-    './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@ktranish/unit/dist/**/*.{js,ts,jsx,tsx}',
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@ktranish/unit/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       ...designSystemConfig.theme,
     },
   },
-  plugins: [
-    ...designSystemConfig.plugins,
-  ],
+  plugins: [...designSystemConfig.plugins],
 };
 ```
 
@@ -115,11 +113,11 @@ Each JSON file contains translations for one language. For example, `en.json`:
 Then, in `App.tsx`, dynamically load translations based on the selected language:
 
 ```tsx
-import React, { useState, useEffect } from 'react';
-import { Button, TranslationProvider, useTranslation } from '@ktranish/unit';
+import React, { useState, useEffect } from "react";
+import { Button, TranslationProvider, useTranslation } from "@ktranish/unit";
 
 const App = () => {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState("en");
   const [translations, setTranslations] = useState({});
 
   const loadTranslations = async (lang: string) => {
@@ -132,14 +130,14 @@ const App = () => {
   }, [language]);
 
   const switchLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'es' : 'en'));
+    setLanguage((prev) => (prev === "en" ? "es" : "en"));
   };
 
   return (
     <TranslationProvider translations={translations}>
       <Welcome />
       <button onClick={switchLanguage}>
-        Switch to {language === 'en' ? 'Spanish' : 'English'}
+        Switch to {language === "en" ? "Spanish" : "English"}
       </button>
     </TranslationProvider>
   );
@@ -155,7 +153,6 @@ const Welcome = () => {
     </div>
   );
 };
-
 ```
 
 This setup allows you to load only the necessary translations, keeping the app lightweight and efficient.
