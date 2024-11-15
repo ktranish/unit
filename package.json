@@ -10,8 +10,8 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./hooks/*": "./dist/hooks/*",
-    "./utils/*": "./dist/utils/*"
+    "./hooks/*": "./dist/hooks/*.js",
+    "./utils/*": "./dist/utils/*.js"
   },
   "scripts": {
     "build": "npx postcss src/index.css -o dist/index.css && tsc",
