@@ -197,7 +197,7 @@ export async function getServerSideProps(context) {
   const translations = await getServerSideTranslations(
     locale,
     ["common", "home"],
-    path.join(process.cwd(), "translations"),
+    path.resolve(process.cwd(), "translations"),
   );
 
   return {
