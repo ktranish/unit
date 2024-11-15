@@ -34,7 +34,8 @@ Example usage:
 
 ```tsx
 import React from "react";
-import { Button, cn } from "@ktranish/unit";
+import { Button } from "@ktranish/unit";
+import { cn } from "@ktranish/unit/utils/cn";
 
 function App() {
   return (
@@ -247,7 +248,8 @@ Then, in `App.tsx`, dynamically load translations based on the selected language
 
 ```tsx
 import React, { useState, useEffect } from "react";
-import { Button, TranslationProvider, useTranslation } from "@ktranish/unit";
+import { Button } from "@ktranish/unit";
+import { TranslationProvider, useTranslation } from "@ktranish/unit/hooks/useTranslation";
 
 const App = () => {
   const [language, setLanguage] = useState("en");
