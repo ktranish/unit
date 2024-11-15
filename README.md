@@ -100,13 +100,16 @@ locales/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from '@ktranish/unit';
+import { getServerSideTranslations } from "@ktranish/unit";
 
 export async function getServerSideProps(context) {
-  const { locale = 'en' } = context;
+  const { locale = "en" } = context;
 
   // Load specific namespaces for the locale
-  const translations = await getServerSideTranslations(locale, ['common', 'home']);
+  const translations = await getServerSideTranslations(locale, [
+    "common",
+    "home",
+  ]);
 
   return {
     props: {
@@ -140,10 +143,10 @@ locales/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from '@ktranish/unit';
+import { getServerSideTranslations } from "@ktranish/unit";
 
 export async function getServerSideProps(context) {
-  const { locale = 'en' } = context;
+  const { locale = "en" } = context;
 
   // Load all translations for the locale
   const translations = await getServerSideTranslations(locale);
