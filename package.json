@@ -9,8 +9,9 @@
     "tailwind.config.js"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./utils/getServerSideTranslations": "./dist/utils/getServerSideTranslations.js"
+    "./components/*": "./dist/components/*",
+    "./hooks/*": "./dist/hooks/*",
+    "./utils/*": "./dist/utils/*"
   },
   "scripts": {
     "build": "npx postcss src/index.css -o dist/index.css && tsc",
