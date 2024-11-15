@@ -10,9 +10,7 @@
   ],
   "exports": {
     ".": "./dist/index.js",
-    "./utils/getServerSideTranslations": {
-      "node": "./dist/utils/getServerSideTranslations.js"
-    }
+    "./utils/getServerSideTranslations": "./dist/utils/getServerSideTranslations.js"
   },
   "scripts": {
     "build": "npx postcss src/index.css -o dist/index.css && tsc",
