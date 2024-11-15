@@ -187,17 +187,17 @@ translations/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from '@ktranish/unit';
-import path from 'path';
+import { getServerSideTranslations } from "@ktranish/unit";
+import path from "path";
 
 export async function getServerSideProps(context) {
-  const { locale = 'en' } = context;
+  const { locale = "en" } = context;
 
   // Specify a custom basePath for translations
   const translations = await getServerSideTranslations(
     locale,
-    ['common', 'home'],
-    path.join(process.cwd(), 'translations')
+    ["common", "home"],
+    path.join(process.cwd(), "translations"),
   );
 
   return {
@@ -215,7 +215,6 @@ export default function HomePage({ translations }: { translations: any }) {
     </TranslationProvider>
   );
 }
-
 ```
 
 ### Dynamic Language Loading

@@ -8,6 +8,13 @@
     "dist",
     "tailwind.config.js"
   ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./utils/getServerSideTranslations": {
+      "node": "./dist/utils/getServerSideTranslations.js",
+      "default": "./dist/utils/getClientSideTranslations.js"
+    }
+  },
   "scripts": {
     "build": "npx postcss src/index.css -o dist/index.css && tsc",
     "prepare": "husky",
@@ -15,9 +22,20 @@
     "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css}\"",
     "prettier:check": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css}\""
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "tailwindcss",
+    "design-system",
+    "typescript",
+    "hooks"
+  ],
+  "author": "Kenny Tran",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktranish/unit"
+  },
+  "homepage": "https://github.com/ktranish/unit#readme",
   "dependencies": {
     "clsx": "^2.1.1",
     "react": "^18.3.1",
