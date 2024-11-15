@@ -1,6 +1,6 @@
 # Unit
 
-> A React-based design system built for consistency and flexibility, utilizing Tailwind CSS and utility-first styling.
+> **A React-based design system built for consistency and flexibility, utilizing Tailwind CSS and utility-first styling.**
 
 ## About
 
@@ -88,7 +88,7 @@ Unit includes a `useTranslation` hook and `TranslationProvider` to support multi
 
 For larger applications, translations can be loaded dynamically based on the selected language. Consumers can store each language in a separate JSON file and load it as needed.
 
-**Example setup with JSON files:**
+#### Example setup with JSON files:
 
 Organize translations in `locales` directory as follows:
 
@@ -169,7 +169,7 @@ pnpm build
 
 ### Linting & Formatting
 
-This project uses ESLint for linting and Prettier for code formatting.
+This project uses **ESLint** for linting and **Prettier** for code formatting.
 
 - **Lint**: Run `pnpm run lint` to check for linting errors.
 - **Format**: Run `pnpm run prettier:format` to auto-format your code.
