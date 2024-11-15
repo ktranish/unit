@@ -100,7 +100,7 @@ locales/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from "@ktranish/unit";
+import { getServerSideTranslations } from "@ktranish/unit/utils/getServerSideTranslations";
 
 export async function getServerSideProps(context) {
   const { locale = "en" } = context;
@@ -143,7 +143,7 @@ locales/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from "@ktranish/unit";
+import { getServerSideTranslations } from "@ktranish/unit/utils/getServerSideTranslations";
 
 export async function getServerSideProps(context) {
   const { locale = "en" } = context;
@@ -187,7 +187,7 @@ translations/
 #### Example Consumer Code
 
 ```tsx
-import { getServerSideTranslations } from "@ktranish/unit";
+import { getServerSideTranslations } from "@ktranish/unit/utils/getServerSideTranslations";
 import path from "path";
 
 export async function getServerSideProps(context) {
