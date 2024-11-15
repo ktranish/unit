@@ -79,10 +79,91 @@ pnpm add -D @tailwindcss/forms @tailwindcss/typography
 
 ## Translation Setup
 
-Unit includes a `useTranslation` hook and `TranslationProvider` to support multilingual content, which can load large translation objects dynamically. This feature is optional and can be used as needed in your project.
+Unit includes a `getServerSideTranslations` utility function and `TranslationProvider` to support multilingual content. This feature works seamlessly with or without namespaces.
 
-1. **Wrap your application** with `TranslationProvider`, passing a language-specific translation object.
-2. **Use the `useTranslation` hook** to access translations within components.
+### With Namespaces
+
+For projects that use namespaces (e.g., modular translations for `common`, `home`, etc.), you can specify the namespaces to load:
+
+#### Example Directory Structure
+
+```bash
+locales/
+├── en/
+│   ├── common.json
+│   ├── home.json
+├── es/
+│   ├── common.json
+│   ├── home.json
+```
+
+#### Example Consumer Code
+
+```tsx
+import { getServerSideTranslations } from '@ktranish/unit';
+
+export async function getServerSideProps(context) {
+  const { locale = 'en' } = context;
+
+  // Load specific namespaces for the locale
+  const translations = await getServerSideTranslations(locale, ['common', 'home']);
+
+  return {
+    props: {
+      locale,
+      translations,
+    },
+  };
+}
+
+export default function HomePage({ translations }: { translations: any }) {
+  return (
+    <TranslationProvider translations={translations}>
+      <Main />
+    </TranslationProvider>
+  );
+}
+```
+
+### Without Namespaces
+
+For projects that don’t use namespaces, the utility will automatically load all translation files in the specified locale directory.
+
+#### Example Directory Structure
+
+```bash
+locales/
+├── en.json
+├── es.json
+```
+
+#### Example Consumer Code
+
+```tsx
+import { getServerSideTranslations } from '@ktranish/unit';
+
+export async function getServerSideProps(context) {
+  const { locale = 'en' } = context;
+
+  // Load all translations for the locale
+  const translations = await getServerSideTranslations(locale);
+
+  return {
+    props: {
+      locale,
+      translations,
+    },
+  };
+}
+
+export default function HomePage({ translations }: { translations: any }) {
+  return (
+    <TranslationProvider translations={translations}>
+      <Main />
+    </TranslationProvider>
+  );
+}
+```
 
 ### Dynamic Language Loading
 
