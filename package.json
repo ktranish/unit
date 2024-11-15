@@ -9,7 +9,7 @@
     "tailwind.config.js"
   ],
   "exports": {
-    "./components/*": "./dist/components/*",
+    ".": "./dist/index.js",
     "./hooks/*": "./dist/hooks/*",
     "./utils/*": "./dist/utils/*"
   },
