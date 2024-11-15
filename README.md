@@ -168,6 +168,56 @@ export default function HomePage({ translations }: { translations: any }) {
 }
 ```
 
+### Custom Translation Path
+
+If your translations are stored in a non-standard directory, you can use the `basePath` parameter to specify the root directory of your translations.
+
+#### Custom Directory Structure
+
+```bash
+translations/
+├── en/
+│   ├── common.json
+│   ├── home.json
+├── es/
+│   ├── common.json
+│   ├── home.json
+```
+
+#### Example Consumer Code
+
+```tsx
+import { getServerSideTranslations } from '@ktranish/unit';
+import path from 'path';
+
+export async function getServerSideProps(context) {
+  const { locale = 'en' } = context;
+
+  // Specify a custom basePath for translations
+  const translations = await getServerSideTranslations(
+    locale,
+    ['common', 'home'],
+    path.join(process.cwd(), 'translations')
+  );
+
+  return {
+    props: {
+      locale,
+      translations,
+    },
+  };
+}
+
+export default function HomePage({ translations }: { translations: any }) {
+  return (
+    <TranslationProvider translations={translations}>
+      <Main />
+    </TranslationProvider>
+  );
+}
+
+```
+
 ### Dynamic Language Loading
 
 For larger applications, translations can be loaded dynamically based on the selected language. Consumers can store each language in a separate JSON file and load it as needed.
