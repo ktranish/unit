@@ -4,12 +4,13 @@ import path from "path";
 export async function getServerSideTranslations(
   locale: string,
   namespaces: string[] = [],
+  basePath: string = path.join(process.cwd(), "locales"),
 ) {
   const translations: Record<string, string> = {};
 
   if (namespaces.length === 0) {
-    // If no namespaces are provided, load all files in the locale directory
-    const localeDir = path.join(process.cwd(), "locales", locale);
+    // Load all files in the locale directory
+    const localeDir = path.join(basePath, locale);
     try {
       const files = await fs.readdir(localeDir);
       for (const file of files) {
@@ -28,19 +29,12 @@ export async function getServerSideTranslations(
   } else {
     // Load only the specified namespaces
     for (const namespace of namespaces) {
-      const filePath = path.join(
-        process.cwd(),
-        "locales",
-        locale,
-        `${namespace}.json`,
-      );
+      const filePath = path.join(basePath, locale, `${namespace}.json`);
       try {
         const content = await fs.readFile(filePath, "utf-8");
         translations[namespace] = JSON.parse(content);
       } catch (error) {
-        console.warn(
-          `Missing translations for ${locale}/${namespace} - ${error}`,
-        );
+        console.warn(`Missing translations for ${locale}/${namespace}:`, error);
       }
     }
   }
