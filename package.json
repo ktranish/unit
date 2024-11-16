@@ -1,7 +1,7 @@
 {
   "name": "@ktranish/unit",
   "version": "1.0.0",
-  "description": "A flexible React-based design system leveraging Tailwind CSS and TypeScript.",
+  "description": "A React-based design system built for consistency and flexibility, with support for Tailwind CSS and utility-first styling.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

@@ -247,7 +247,10 @@ Then, in `App.tsx`, dynamically load translations based on the selected language
 ```tsx
 import React, { useState, useEffect } from "react";
 import { Button } from "@ktranish/unit";
-import { TranslationProvider, useTranslation } from "@ktranish/unit/hooks/useTranslation";
+import {
+  TranslationProvider,
+  useTranslation,
+} from "@ktranish/unit/hooks/useTranslation";
 
 const App = () => {
   const [language, setLanguage] = useState("en");
