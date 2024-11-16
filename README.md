@@ -19,9 +19,16 @@
 
 ### Installation
 
-To install Unit, use `pnpm` (or `npm/yarn`) to add it to your project:
+Install Unit via your preferred package manager:
 
 ```bash
+# npm
+npm install @ktranish/unit
+
+# yarn
+yarn add @ktranish/unit
+
+# pnpm
 pnpm add @ktranish/unit
 ```
 
