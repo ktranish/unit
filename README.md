@@ -8,12 +8,12 @@
 
 ## Features
 
-- **React Components**: Custom components designed for reusability and easy integration.
-- **Tailwind CSS Integration**: Built-in support for Tailwind CSS, allowing quick styling with utility classes.
-- **TypeScript**: Full TypeScript support for better type safety and developer experience.
-- **Utility-first Styling**: Offers a range of configurable design tokens for spacing, typography, colors, and more.
-- **Translation Hook**: Provides an easy-to-use translation hook (`useTranslation`) for multilingual support, with support for dynamic language loading.
-- **Scalable Structure**: Organized file structure for easy navigation and scaling as the design system grows.
+- ⚛️ **React Components**: Custom components designed for reusability and easy integration.
+- 🎨 **Tailwind CSS Integration**: Built-in support for Tailwind CSS, allowing quick styling with utility classes.
+- 📘 **TypeScript**: Full TypeScript support for better type safety and developer experience.
+- ✂️ **Utility-first Styling**: Offers a range of configurable design tokens for spacing, typography, colors, and more.
+- 🌍 **Translation Hook**: Provides an easy-to-use translation hook (`useTranslation`) for multilingual support, with support for dynamic language loading.
+- 🏗️ **Scalable Structure**: Organized file structure for easy navigation and scaling as the design system grows.
 
 ## Getting Started
 
