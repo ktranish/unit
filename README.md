@@ -13,7 +13,6 @@
 - 📘 **TypeScript**: Full TypeScript support for better type safety and developer experience.
 - ✂️ **Utility-first Styling**: Offers a range of configurable design tokens for spacing, typography, colors, and more.
 - 🌍 **Translation Hook**: Provides an easy-to-use translation hook (`useTranslation`) for multilingual support, with support for dynamic language loading.
-- 🏗️ **Scalable Structure**: Organized file structure for easy navigation and scaling as the design system grows.
 
 ## Getting Started
 
