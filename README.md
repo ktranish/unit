@@ -76,14 +76,6 @@ module.exports = {
 };
 ```
 
-### Required Plugin Installation
-
-To use the plugins from Unit’s configuration, make sure to install the following packages:
-
-```bash
-pnpm add -D @tailwindcss/forms @tailwindcss/typography
-```
-
 ## Translation Setup
 
 Unit includes a `getServerSideTranslations` utility function and `TranslationProvider` to support multilingual content. This feature works seamlessly with or without namespaces.
