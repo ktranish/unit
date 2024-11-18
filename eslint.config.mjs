@@ -8,9 +8,11 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        ecmaVersion: 2020,
+        ecmaVersion: "latest",
         sourceType: "module",
-        jsx: true, // Enable JSX for React
+        ecmaFeatures: {
+          jsx: true, // Enable JSX for React
+        },
       },
     },
     plugins: {
@@ -20,6 +22,12 @@ export default [
     rules: {
       ...eslintPluginReact.configs.recommended.rules,
       ...typescriptEslintPlugin.configs.recommended.rules,
+      "@typescript-eslint/no-unused-expressions": [
+        "error",
+        {
+          allowShortCircuit: true,
+        },
+      ],
     },
     settings: {
       react: {

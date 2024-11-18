@@ -11,7 +11,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./hooks/*": "./dist/hooks/*.js",
-    "./utils/*": "./dist/utils/*.js"
+    "./utils/*": "./dist/utils/*.js",
+    "./tailwind-config": "./tailwind.config.js"
   },
   "scripts": {
     "build": "npx postcss src/index.css -o dist/index.css && tsc",
