@@ -2,24 +2,37 @@
   "name": "@ktranish/unit",
   "version": "1.0.0",
   "description": "A React-based design system built for consistency and flexibility, with support for Tailwind CSS and utility-first styling.",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
     "tailwind.config.js"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./hooks/*": "./dist/hooks/*.js",
-    "./utils/*": "./dist/utils/*.js",
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./hooks/*": {
+      "import": "./dist/esm/hooks/*.js",
+      "require": "./dist/cjs/hooks/*.js"
+    },
+    "./utils/*": {
+      "import": "./dist/esm/utils/*.js",
+      "require": "./dist/cjs/utils/*.js"
+    },
     "./tailwind-config": "./tailwind.config.js"
   },
   "scripts": {
-    "build": "npx postcss src/index.css -o dist/index.css && tsc",
-    "prepare": "husky",
+    "build:esm": "tsc --module ESNext --outDir dist/esm",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build:css": "npx postcss src/index.css -o dist/index.css",
+    "build": "npm run build:esm && npm run build:cjs && npm run build:css",
+    "prepare": "husky install",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "prettier:format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css}\"",
-    "prettier:check": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css}\""
+    "prettier:format": "prettier --write '**/*.{ts,tsx,js,md,mdx,css}'",
+    "prettier:check": "prettier --check '**/*.{ts,tsx,js,md,mdx,css}'"
   },
   "keywords": [
     "react",

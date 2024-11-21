@@ -3,7 +3,7 @@
     /* Language and Environment */
     "target": "ESNext",
     "jsx": "react-jsx",
-    "module": "ESNext",
+    "module": "CommonJS",
     "lib": ["DOM", "ESNext"],
 
     /* Modules */
@@ -14,7 +14,7 @@
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": false, // Emit both .js and .d.ts files
-    "outDir": "dist/esm",
+    "outDir": "dist/cjs",
 
     /* Interop Constraints */
     "esModuleInterop": true,
