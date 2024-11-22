@@ -9,25 +9,6 @@
     "dist",
     "tailwind.config.js"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    },
-    "./components/*": {
-      "import": "./dist/esm/components/*",
-      "require": "./dist/cjs/components/*"
-    },
-    "./hooks/*": {
-      "import": "./dist/esm/hooks/*",
-      "require": "./dist/cjs/hooks/*"
-    },
-    "./utils/*": {
-      "import": "./dist/esm/utils/*",
-      "require": "./dist/cjs/utils/*"
-    },
-    "./tailwind-config": "./tailwind.config.js"
-  },
   "scripts": {
     "build:esm": "tsc --module ESNext --outDir dist/esm",
     "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
