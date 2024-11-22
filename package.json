@@ -14,13 +14,17 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
+    "./components/*": {
+      "import": "./dist/esm/components/*",
+      "require": "./dist/cjs/components/*"
+    },
     "./hooks/*": {
-      "import": "./dist/esm/hooks/*.js",
-      "require": "./dist/cjs/hooks/*.js"
+      "import": "./dist/esm/hooks/*",
+      "require": "./dist/cjs/hooks/*"
     },
     "./utils/*": {
-      "import": "./dist/esm/utils/*.js",
-      "require": "./dist/cjs/utils/*.js"
+      "import": "./dist/esm/utils/*",
+      "require": "./dist/cjs/utils/*"
     },
     "./tailwind-config": "./tailwind.config.js"
   },
