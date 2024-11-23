@@ -1,6 +1,6 @@
 import React, { ImgHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
-import { H3 } from "./typography";
+import { H3, P } from "./typography";
 
 const Container = React.forwardRef<
   HTMLElement,
@@ -53,4 +53,17 @@ const Title = React.forwardRef<
 
 Title.displayName = "Title"; // Adding a display name for better debugging in React DevTools
 
-export { Container, Image, Title };
+const Description = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <P ref={ref} className={cn("prose line-clamp-3", className)} {...props}>
+      {children}
+    </P>
+  );
+});
+
+Description.displayName = "Description"; // Adding a display name for better debugging in React DevTools
+
+export { Container, Description, Image, Title };
