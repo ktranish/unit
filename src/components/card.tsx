@@ -89,7 +89,6 @@ const Author = React.forwardRef<
         <span className="absolute inset-0" />
         <P className="font-semibold">{children}</P>
       </a>
-      {children}
     </div>
   );
 });
