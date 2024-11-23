@@ -8,7 +8,7 @@ const P = React.forwardRef<
   return (
     <p
       ref={ref}
-      className={cn("prose text-lg/8 text-gray-600", className)}
+      className={cn("text-lg/8 text-gray-600", className)}
       {...props}
     >
       {children}
