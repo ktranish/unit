@@ -1,7 +1,13 @@
 import React, { ImgHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
 import Avatar from "./avatar";
-import { H3, P } from "./typography";
+import { H3, P, Small } from "./typography";
+
+interface Category {
+  name?: string | null;
+  link?: string | null;
+  id: string;
+}
 
 const Container = React.forwardRef<
   HTMLElement,
@@ -95,4 +101,38 @@ const Author = React.forwardRef<
 
 Author.displayName = "Author"; // Adding a display name for better debugging in React DevTools
 
-export { Author, Container, Description, Image, Title };
+const Header = React.forwardRef<
+  HTMLHeadingElement,
+  Omit<
+    React.HTMLAttributes<HTMLHeadingElement> & {
+      date: string;
+      categories?: Category[];
+    },
+    "children"
+  >
+>(({ className, date, categories, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center gap-x-4", className)}
+      {...props}
+    >
+      <time dateTime={date}>
+        <Small>{date}</Small>
+      </time>
+      {categories?.map((category) => (
+        <a
+          key={category.id}
+          href={category.link ?? ""}
+          className="relative z-10 rounded-full bg-gray-50 px-3 py-1 font-medium hover:bg-gray-100"
+        >
+          <Small>{category.name}</Small>
+        </a>
+      ))}
+    </div>
+  );
+});
+
+Header.displayName = "Header"; // Adding a display name for better debugging in React DevTools
+
+export { Author, Container, Description, Header, Image, Title };
