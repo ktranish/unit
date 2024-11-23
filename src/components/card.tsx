@@ -3,7 +3,7 @@ import { cn } from "../utils/cn";
 import Avatar from "./avatar";
 import { H3, P, Small } from "./typography";
 
-interface Category {
+export interface Category {
   name?: string | null;
   link?: string | null;
   id: string;
