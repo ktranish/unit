@@ -51,4 +51,37 @@ const LI = React.forwardRef<HTMLLIElement, React.HTMLAttributes<HTMLLIElement>>(
 
 LI.displayName = "LI"; // Adding a display name for better debugging in React DevTools
 
-export { LI, OL, UL };
+const ItemLeft = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <div ref={ref} className={cn("flex min-w-0 gap-x-4", className)} {...props}>
+      {children}
+    </div>
+  );
+});
+
+ItemLeft.displayName = "ItemLeft"; // Adding a display name for better debugging in React DevTools
+
+const ItemRight = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "hidden shrink-0 sm:flex sm:flex-col sm:items-end",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
+
+ItemRight.displayName = "ItemRight"; // Adding a display name for better debugging in React DevTools
+
+export { ItemLeft, ItemRight, LI, OL, UL };
