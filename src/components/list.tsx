@@ -8,7 +8,7 @@ const UL = React.forwardRef<
   return (
     <ul
       ref={ref}
-      className={cn("prose max-w-none divide-y divide-gray-100", className)}
+      className={cn("divide-y divide-gray-100", className)}
       {...props}
     >
       {children}
@@ -25,7 +25,7 @@ const OL = React.forwardRef<
   return (
     <ol
       ref={ref}
-      className={cn("prose max-w-none divide-y divide-gray-100", className)}
+      className={cn("divide-y divide-gray-100", className)}
       {...props}
     >
       {children}
