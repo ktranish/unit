@@ -1,9 +1,12 @@
-import React from "react";
+import React, { ImgHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
 
+/**
+ * @see https://github.com/jsx-eslint/eslint-plugin-react/issues/3284#issuecomment-2021754931
+ */
 const Avatar = React.forwardRef<
   HTMLImageElement,
-  React.HTMLAttributes<HTMLImageElement>
+  ImgHTMLAttributes<HTMLImageElement>
 >(({ className, ...props }, ref) => {
   return (
     <img
