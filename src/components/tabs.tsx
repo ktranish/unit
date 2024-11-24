@@ -18,7 +18,14 @@ const Tabs: React.FC<{ navigation: Navigation[] }> = ({ navigation }) => {
         <select
           id="tabs"
           name="tabs"
-          onChange={(e) => window.location.assign(e.target.value.toLowerCase())}
+          onChange={(e) =>
+            window.location.assign(
+              navigation.find(
+                (tab) =>
+                  tab.name.toLowerCase() === e.target.value.toLowerCase(),
+              )?.href ?? "#",
+            )
+          }
           defaultValue={navigation.find((tab) => tab.current)?.name}
           className="block w-full rounded-md border-gray-300 focus:border-gray-500 focus:ring-gray-500"
         >
