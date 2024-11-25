@@ -1,10 +1,13 @@
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { cn } from "../utils/cn";
+import { Navigation } from "./tabs";
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,
-  React.HTMLAttributes<HTMLElement> & { breadcrumbs?: string[] }
+  React.HTMLAttributes<HTMLElement> & {
+    breadcrumbs?: Omit<Navigation, "current">[];
+  }
 >(({ className, breadcrumbs, ...props }, ref) => {
   return (
     <nav
@@ -15,14 +18,13 @@ const Breadcrumb = React.forwardRef<
     >
       <ol role="list" className="flex items-center space-x-4">
         {breadcrumbs?.map((item, index) => (
-          <li key={item}>
+          <li key={item.name}>
             <div className="flex items-center">
               <a
-                href={item}
-                aria-current={false ? "page" : undefined}
+                href={item.href}
                 className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700"
               >
-                {item.replaceAll("/", "")}
+                {item.name}
               </a>
               {index != (breadcrumbs?.length ?? 0) - 1 && (
                 <ChevronRightIcon
