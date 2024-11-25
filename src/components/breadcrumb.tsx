@@ -18,7 +18,7 @@ const Breadcrumb = React.forwardRef<
     >
       <ol role="list" className="flex items-center space-x-4">
         {breadcrumbs?.map((item, index) => (
-          <li key={item.name}>
+          <li key={index}>
             <div className="flex items-center">
               <a
                 href={item.href}
