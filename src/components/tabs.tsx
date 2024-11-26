@@ -34,7 +34,7 @@ const Tabs: React.FC<{ navigation: Navigation[] }> = ({ navigation }) => {
           ))}
         </select>
       </div>
-      <div className="m-4 hidden rounded-md border border-gray-200 p-1.5 sm:block">
+      <div className="hidden rounded-md border border-gray-200 p-1.5 sm:block">
         <nav aria-label="Tabs" className="flex space-x-4">
           {navigation.map((tab) => (
             <a
