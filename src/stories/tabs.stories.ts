@@ -11,15 +11,6 @@ const meta = {
     // More on how to position stories at: https://storybook.js.org/docs/configure/story-layout
     layout: "fullscreen",
   },
-  args: {
-    navigation: [
-      {
-        current: true,
-        href: "/",
-        name: "Home",
-      },
-    ],
-  },
 } satisfies Meta<typeof Tabs>;
 
 export default meta;
@@ -32,9 +23,24 @@ export const Story: Story = {
   args: {
     navigation: [
       {
-        current: true,
+        current: false,
         href: "/",
         name: "Home",
+      },
+      {
+        current: true,
+        href: "/",
+        name: "Blog",
+      },
+      {
+        current: false,
+        href: "/",
+        name: "About",
+      },
+      {
+        current: false,
+        href: "/",
+        name: "Contact",
       },
     ],
   },
