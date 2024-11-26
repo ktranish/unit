@@ -28,7 +28,7 @@ type Story = StoryObj<typeof Tabs>;
 /**
  * @see https://storybook.js.org/docs/get-started/setup
  */
-export const TabsStory: Story = {
+export const Story: Story = {
   args: {
     navigation: [
       {
