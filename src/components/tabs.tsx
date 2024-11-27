@@ -18,40 +18,34 @@ const Tabs: React.FC<{ navigation: Navigation[] }> = ({ navigation }) => {
         <select
           id="tabs"
           name="tabs"
-          onChange={(e) =>
-            window.location.assign(
-              navigation.find(
-                (tab) =>
-                  tab.name.toLowerCase() === e.target.value.toLowerCase(),
-              )?.href ?? "#",
-            )
-          }
           defaultValue={navigation.find((tab) => tab.current)?.name}
-          className="block w-full rounded-md border-gray-300 focus:border-gray-500 focus:ring-gray-500"
+          className="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-gray-500 focus:outline-none focus:ring-gray-500 sm:text-sm"
         >
           {navigation.map((tab) => (
             <option key={tab.name}>{tab.name}</option>
           ))}
         </select>
       </div>
-      <div className="hidden rounded-md border border-gray-200 p-1.5 sm:block">
-        <nav aria-label="Tabs" className="flex space-x-4">
-          {navigation.map((tab) => (
-            <a
-              key={tab.name}
-              href={tab.href}
-              aria-current={tab.current ? "page" : undefined}
-              className={cn(
-                tab.current
-                  ? "text-gray-800 underline underline-offset-8"
-                  : "text-gray-400 hover:text-gray-800",
-                "rounded-md px-3 py-2 text-sm font-medium",
-              )}
-            >
-              {tab.name}
-            </a>
-          ))}
-        </nav>
+      <div className="hidden sm:block">
+        <div className="border-b border-gray-200">
+          <nav aria-label="Tabs" className="-mb-px flex space-x-8">
+            {navigation.map((tab) => (
+              <a
+                key={tab.name}
+                href={tab.href}
+                aria-current={tab.current ? "page" : undefined}
+                className={cn(
+                  tab.current
+                    ? "border-gray-500 text-gray-600"
+                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                  "whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium",
+                )}
+              >
+                {tab.name}
+              </a>
+            ))}
+          </nav>
+        </div>
       </div>
     </div>
   );
