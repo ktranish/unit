@@ -28,6 +28,7 @@ export default [
           allowShortCircuit: true,
         },
       ],
+      "@typescript-eslint/no-explicit-any": "off",
     },
     settings: {
       react: {
