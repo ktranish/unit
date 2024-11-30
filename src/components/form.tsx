@@ -1,4 +1,8 @@
-import React, { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import React, {
+  ButtonHTMLAttributes,
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+} from "react";
 import { cn } from "../utils/cn";
 
 const Form = React.forwardRef<
@@ -66,4 +70,24 @@ const Wrapper = React.forwardRef<
 
 Wrapper.displayName = "Wrapper"; // Adding a display name for better debugging in React DevTools
 
-export { Form, Input, Label, Wrapper };
+const Button = React.forwardRef<
+  HTMLButtonElement,
+  ButtonHTMLAttributes<HTMLButtonElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        "flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+});
+
+Button.displayName = "Button"; // Adding a display name for better debugging in React DevTools
+
+export { Button, Form, Input, Label, Wrapper };
