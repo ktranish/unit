@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes, LabelHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
 
 const Form = React.forwardRef<
@@ -16,7 +16,7 @@ Form.displayName = "Form"; // Adding a display name for better debugging in Reac
 
 const Label = React.forwardRef<
   HTMLLabelElement,
-  React.HTMLAttributes<HTMLLabelElement>
+  LabelHTMLAttributes<HTMLLabelElement>
 >(({ className, children, ...props }, ref) => {
   return (
     <label
