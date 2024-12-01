@@ -81,7 +81,11 @@ const Dropdown: React.FC<{
           className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
         >
           {navigation.map((item) => (
-            <Link key={item.name} href={item.href}>
+            <Link
+              key={item.name}
+              href={item.href}
+              className="block rounded-lg px-3 py-2 hover:bg-gray-50"
+            >
               <Item>{item.name}</Item>
             </Link>
           ))}
