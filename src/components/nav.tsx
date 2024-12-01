@@ -61,9 +61,9 @@ const Right = React.forwardRef<
 Right.displayName = "Right"; // Adding a display name for better debugging in React DevTools
 
 const Dropdown: React.FC<{
-  children: React.ReactNode;
+  children?: React.ReactNode;
   navigation: Omit<Navigation, "current">[];
-  link: React.ReactElement;
+  link: React.ElementType<{ href: string }>;
 }> = ({ children, navigation, link }) => {
   return (
     <PopoverGroup className="hidden lg:block">
@@ -82,9 +82,9 @@ const Dropdown: React.FC<{
         >
           {navigation.map((item) =>
             React.cloneElement(
-              link,
-              { key: item.name, href: item.href },
-              <Item>{item.name}</Item>,
+              React.createElement(link, { href: item.href }), // Instantiate `link` as a ReactElement
+              { key: item.name }, // Add `key` prop here
+              <span>{item.name}</span>, // Pass `children` dynamically
             ),
           )}
         </PopoverPanel>
@@ -95,4 +95,4 @@ const Dropdown: React.FC<{
 
 Dropdown.displayName = "Dropdown"; // Adding a display name for better debugging in React DevTools
 
-export { Dropdown, Left, Right };
+export { Dropdown, Item, Left, Right };
