@@ -80,13 +80,30 @@ const Dropdown: React.FC<{
           transition
           className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
         >
-          {navigation.map((item) =>
-            React.cloneElement(
-              <Link href={item.href} />, // Create a Link element with `href` dynamically
-              { key: item.name }, // Add unique `key`
-              <span>{item.name}</span>, // Pass `children` dynamically
-            ),
-          )}
+          {navigation.map((item) => {
+            if (React.isValidElement(Link)) {
+              // Case 1: `Link` is a React element (e.g., `<a />`)
+              return React.cloneElement(
+                Link as React.ReactElement<{ href: string }>,
+                {
+                  href: item.href,
+                  key: item.name,
+                },
+                <Item>item.name</Item>,
+              );
+            }
+
+            if (typeof Link === "function") {
+              // Case 2: `link` is a React component (e.g., Next.js `Link`)
+              return (
+                <Link key={item.name} href={item.href}>
+                  <Item>{item.name}</Item>
+                </Link>
+              );
+            }
+
+            return null;
+          })}
         </PopoverPanel>
       </Popover>
     </PopoverGroup>
