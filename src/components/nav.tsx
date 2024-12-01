@@ -63,8 +63,8 @@ Right.displayName = "Right"; // Adding a display name for better debugging in Re
 const Dropdown: React.FC<{
   children: React.ReactNode;
   navigation: Omit<Navigation, "current">[];
-  wrapper: React.ReactElement;
-}> = ({ children, navigation, wrapper }) => {
+  link: React.ReactElement;
+}> = ({ children, navigation, link }) => {
   return (
     <PopoverGroup className="hidden lg:block">
       <Popover className="relative">
@@ -82,7 +82,7 @@ const Dropdown: React.FC<{
         >
           {navigation.map((item) =>
             React.cloneElement(
-              wrapper,
+              link,
               { key: item.name, href: item.href },
               <Item>{item.name}</Item>,
             ),
