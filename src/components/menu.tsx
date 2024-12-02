@@ -96,7 +96,7 @@ const Item = React.forwardRef<
 Item.displayName = "Item"; // Adding a display name for better debugging in React DevTools
 
 const Dropdown: React.FC<{
-  a?: React.ElementType<HTMLAnchorElement>;
+  a?: React.ElementType<any>;
   children?: React.ReactNode;
   navigation: Omit<Navigation, "current">[];
 }> = ({ a: A, children, navigation }) => {
@@ -113,7 +113,7 @@ const Dropdown: React.FC<{
         {navigation.map((item) => (
           <DisclosureButton
             key={item.name}
-            as={A ? A : "a"}
+            as={typeof A === "function" ? A : "a"}
             href={item.href}
             className="block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50"
           >
