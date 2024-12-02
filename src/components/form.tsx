@@ -90,4 +90,21 @@ const Button = React.forwardRef<
 
 Button.displayName = "Button"; // Adding a display name for better debugging in React DevTools
 
-export { Button, Form, Input, Label, Wrapper };
+const Info = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <p
+      ref={ref}
+      className={cn("text-sm/6 text-gray-500", className)}
+      {...props}
+    >
+      {children}
+    </p>
+  );
+});
+
+Info.displayName = "Info"; // Adding a display name for better debugging in React DevTools
+
+export { Button, Form, Info, Input, Label, Wrapper };
