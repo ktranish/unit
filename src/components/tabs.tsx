@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { cn } from "../utils/cn";
 
 export interface Navigation {
@@ -8,9 +8,10 @@ export interface Navigation {
 }
 
 const Tabs: React.FC<{
+  a?: React.ElementType<any>;
   navigation: Navigation[];
   onChange?: (opts?: any) => void;
-}> = ({ navigation, onChange }) => {
+}> = ({ navigation, onChange, a: A }) => {
   return (
     <div>
       <div className="sm:hidden">
@@ -43,19 +44,35 @@ const Tabs: React.FC<{
         <div className="border-b border-gray-200">
           <nav aria-label="Tabs" className="-mb-px flex space-x-8">
             {navigation.map((tab) => (
-              <a
-                key={tab.name}
-                href={tab.href}
-                aria-current={tab.current ? "page" : undefined}
-                className={cn(
-                  tab.current
-                    ? "border-gray-500 text-gray-600"
-                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                  "whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium",
+              <Fragment key={tab.name}>
+                {A ? (
+                  <A
+                    href={tab.href}
+                    aria-current={tab.current ? "page" : undefined}
+                    className={cn(
+                      tab.current
+                        ? "border-gray-500 text-gray-600"
+                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                      "whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium",
+                    )}
+                  >
+                    {tab.name}
+                  </A>
+                ) : (
+                  <a
+                    href={tab.href}
+                    aria-current={tab.current ? "page" : undefined}
+                    className={cn(
+                      tab.current
+                        ? "border-gray-500 text-gray-600"
+                        : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                      "whitespace-nowrap border-b-2 px-1 py-4 text-sm font-medium",
+                    )}
+                  >
+                    {tab.name}
+                  </a>
                 )}
-              >
-                {tab.name}
-              </a>
+              </Fragment>
             ))}
           </nav>
         </div>

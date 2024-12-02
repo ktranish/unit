@@ -5,7 +5,7 @@ import {
   PopoverPanel,
 } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import React from "react";
+import React, { Fragment } from "react";
 import { cn } from "../utils/cn";
 import { Navigation } from "./tabs";
 
@@ -63,8 +63,8 @@ Right.displayName = "Right"; // Adding a display name for better debugging in Re
 const Dropdown: React.FC<{
   children?: React.ReactNode;
   navigation: Omit<Navigation, "current">[];
-  link: React.ElementType<any>;
-}> = ({ children, navigation, link: Link }) => {
+  a?: React.ElementType<any>;
+}> = ({ children, navigation, a: A }) => {
   return (
     <PopoverGroup className="hidden lg:block">
       <Popover className="relative">
@@ -81,13 +81,23 @@ const Dropdown: React.FC<{
           className="absolute -left-8 top-full z-10 mt-3 w-56 rounded-xl bg-white p-2 shadow-lg ring-1 ring-gray-900/5 transition data-[closed]:translate-y-1 data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-150 data-[enter]:ease-out data-[leave]:ease-in"
         >
           {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block rounded-lg px-3 py-2 hover:bg-gray-50"
-            >
-              <Item>{item.name}</Item>
-            </Link>
+            <Fragment key={item.name}>
+              {A ? (
+                <A
+                  href={item.href}
+                  className="block rounded-lg px-3 py-2 hover:bg-gray-50"
+                >
+                  <Item>{item.name}</Item>
+                </A>
+              ) : (
+                <a
+                  href={item.href}
+                  className="block rounded-lg px-3 py-2 hover:bg-gray-50"
+                >
+                  <Item>{item.name}</Item>
+                </a>
+              )}
+            </Fragment>
           ))}
         </PopoverPanel>
       </Popover>

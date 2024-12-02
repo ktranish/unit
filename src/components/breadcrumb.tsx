@@ -6,9 +6,10 @@ import { Navigation } from "./tabs";
 const Breadcrumb = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement> & {
+    a?: React.ElementType<any>;
     breadcrumbs?: Omit<Navigation, "current">[];
   }
->(({ className, breadcrumbs, ...props }, ref) => {
+>(({ className, breadcrumbs, a: A, ...props }, ref) => {
   return (
     <nav
       ref={ref}
@@ -20,12 +21,21 @@ const Breadcrumb = React.forwardRef<
         {breadcrumbs?.map((item, index) => (
           <li key={index}>
             <div className="flex items-center">
-              <a
-                href={item.href}
-                className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700"
-              >
-                {item.name}
-              </a>
+              {A ? (
+                <A
+                  href={item.href}
+                  className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                >
+                  {item.name}
+                </A>
+              ) : (
+                <a
+                  href={item.href}
+                  className="mr-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+                >
+                  {item.name}
+                </a>
+              )}
               {index != (breadcrumbs?.length ?? 0) - 1 && (
                 <ChevronRightIcon
                   aria-hidden="true"
