@@ -200,4 +200,4 @@ const Header = React.forwardRef<
 
 Header.displayName = "Header"; // Adding a display name for better debugging in React DevTools
 
-export { Author, Container, Description, Header, Image, Title };
+export { Author, Container, Description, Grid, Header, Image, Title };
