@@ -1,13 +1,7 @@
-import React, { ElementType, Fragment, ImgHTMLAttributes } from "react";
+import React, { ImgHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
 import Avatar from "./avatar";
 import { H3, P, Small } from "./typography";
-
-export interface Category {
-  name?: string | null;
-  link?: string | null;
-  id: string;
-}
 
 const Grid = React.forwardRef<
   HTMLDivElement,
@@ -157,47 +151,32 @@ Author.displayName = "Author"; // Adding a display name for better debugging in 
 
 const Header = React.forwardRef<
   HTMLHeadingElement,
-  Omit<
-    React.HTMLAttributes<HTMLHeadingElement> & {
-      a?: ElementType<any>;
-      date: string;
-      categories?: Category[];
-    },
-    "children"
-  >
->(({ className, date, categories, a: A, ...props }, ref) => {
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, children, ...props }, ref) => {
   return (
     <div
       ref={ref}
       className={cn("flex items-center gap-x-4", className)}
       {...props}
     >
-      <time dateTime={date}>
-        <Small>{date}</Small>
-      </time>
-      {categories?.map((category) => (
-        <Fragment key={category.id}>
-          {A ? (
-            <A
-              href={category.link ?? ""}
-              className="relative z-10 rounded-full bg-gray-50 px-3 py-1 font-medium hover:bg-gray-100"
-            >
-              <Small>{category.name}</Small>
-            </A>
-          ) : (
-            <a
-              href={category.link ?? ""}
-              className="relative z-10 rounded-full bg-gray-50 px-3 py-1 font-medium hover:bg-gray-100"
-            >
-              <Small>{category.name}</Small>
-            </a>
-          )}
-        </Fragment>
-      ))}
+      {children}
     </div>
   );
 });
 
 Header.displayName = "Header"; // Adding a display name for better debugging in React DevTools
 
-export { Author, Container, Description, Grid, Header, Image, Title };
+const Time = React.forwardRef<
+  HTMLTimeElement,
+  Omit<React.HTMLAttributes<HTMLTimeElement>, "children"> & { date: string }
+>(({ className, date, ...props }, ref) => {
+  return (
+    <time ref={ref} className={cn(className)} dateTime={date} {...props}>
+      <Small>{date}</Small>
+    </time>
+  );
+});
+
+Time.displayName = "Time"; // Adding a display name for better debugging in React DevTools
+
+export { Author, Container, Description, Grid, Header, Image, Time, Title };
