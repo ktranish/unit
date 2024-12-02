@@ -156,7 +156,7 @@ const Header = React.forwardRef<
   return (
     <div
       ref={ref}
-      className={cn("flex items-center gap-x-4", className)}
+      className={cn("flex flex-wrap items-center gap-x-4", className)}
       {...props}
     >
       {children}

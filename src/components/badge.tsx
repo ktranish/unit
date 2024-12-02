@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "../utils/cn";
+import { Small } from "./typography";
 
 const Badge = React.forwardRef<
   HTMLSpanElement,
@@ -14,7 +15,7 @@ const Badge = React.forwardRef<
       )}
       {...props}
     >
-      {children}
+      <Small>{children}</Small>
     </span>
   );
 });
