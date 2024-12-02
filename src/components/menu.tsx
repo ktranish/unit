@@ -33,8 +33,9 @@ const Header = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     a?: React.ElementType<any>;
+    brand?: React.ReactNode;
   }
->(({ className, children, a: A, ...props }, ref) => {
+>(({ className, children, a: A, brand, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -43,14 +44,14 @@ const Header = React.forwardRef<
     >
       {A ? (
         <A href="/" className="-m-1.5 p-1.5">
-          <NavItem>{children}</NavItem>
+          <NavItem>{brand}</NavItem>
         </A>
       ) : (
         <a href="/" className="-m-1.5 p-1.5">
-          <NavItem>{children}</NavItem>
+          <NavItem>{brand}</NavItem>
         </a>
       )}
-      <X />
+      {children}
     </div>
   );
 });
