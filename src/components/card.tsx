@@ -9,6 +9,26 @@ export interface Category {
   id: string;
 }
 
+const Grid = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-3",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+});
+
+Grid.displayName = "Grid"; // Adding a display name for better debugging in React DevTools
+
 const Container = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement>
