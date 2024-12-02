@@ -7,7 +7,7 @@ import {
 } from "@headlessui/react";
 import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { ButtonHTMLAttributes } from "react";
-import { cn } from "utils/cn";
+import { cn } from "../utils/cn";
 import { Item as NavItem } from "./nav";
 import { Navigation } from "./tabs";
 
@@ -31,10 +31,10 @@ X.displayName = "X"; // Adding a display name for better debugging in React DevT
 
 const Header = React.forwardRef<
   HTMLDivElement,
-  Omit<React.HTMLAttributes<HTMLDivElement>, "children"> & {
+  React.HTMLAttributes<HTMLDivElement> & {
     a?: React.ElementType<any>;
   }
->(({ className, a: A, ...props }, ref) => {
+>(({ className, children, a: A, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -43,11 +43,11 @@ const Header = React.forwardRef<
     >
       {A ? (
         <A href="/" className="-m-1.5 p-1.5">
-          <NavItem>Home</NavItem>
+          <NavItem>{children}</NavItem>
         </A>
       ) : (
         <a href="/" className="-m-1.5 p-1.5">
-          <NavItem>Home</NavItem>
+          <NavItem>{children}</NavItem>
         </a>
       )}
       <X />
