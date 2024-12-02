@@ -5,7 +5,11 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react";
-import { ChevronDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  ChevronDownIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import React, { ButtonHTMLAttributes } from "react";
 import { cn } from "../utils/cn";
 import { Item as NavItem } from "./nav";
@@ -28,6 +32,27 @@ const X = React.forwardRef<
 });
 
 X.displayName = "X"; // Adding a display name for better debugging in React DevTools
+
+const Bar = React.forwardRef<
+  HTMLButtonElement,
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">
+>(({ className, ...props }, ref) => {
+  return (
+    <button
+      ref={ref}
+      className={cn(
+        "-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700",
+        className,
+      )}
+      {...props}
+    >
+      <span className="sr-only">Open main menu</span>
+      <Bars3Icon aria-hidden="true" className="size-6" />
+    </button>
+  );
+});
+
+Bar.displayName = "Bar"; // Adding a display name for better debugging in React DevTools
 
 const Header = React.forwardRef<
   HTMLDivElement,
@@ -127,4 +152,4 @@ const Dropdown: React.FC<{
 
 Dropdown.displayName = "Dropdown"; // Adding a display name for better debugging in React DevTools
 
-export { Container, Dropdown, Header, Item, X };
+export { Bar, Container, Dropdown, Header, Item, X };
