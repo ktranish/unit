@@ -9,7 +9,7 @@ const Ping = React.forwardRef<
     <span
       ref={ref}
       className={cn(
-        "my-auto size-10 rounded-full border-4 motion-safe:animate-ping",
+        "size-10 rounded-full border-4 motion-safe:animate-ping",
         className,
       )}
       {...props}
